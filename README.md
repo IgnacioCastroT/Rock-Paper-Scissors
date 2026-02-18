@@ -12,7 +12,11 @@ Este proyecto es una implementación del juego tradicional de Piedra, Papel o Ti
 2. Abre la consola del navegador (F12 o clic derecho → Inspeccionar → Consola)
 3. El juego se ejecutará automáticamente mostrando los resultados en la consola
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - HTML5
+- CSS
 - JavaScript
+
+## Para ver juego
+https://ignaciocastrot.github.io/Rock-Paper-Scissors/
