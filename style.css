@@ -1,0 +1,92 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+
+}
+
+p, h2, .score, .resultado {
+    font-family: "Play", sans-serif;
+    font-size: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 148, 6);
+    font-family: "Bitcount Grid Double";
+    color: white;
+    font-size: 40px;
+    width: 100%;
+}
+
+
+img {
+    width: 300px;
+    height: 400px;
+}
+
+button {
+    border: 0;
+}
+
+.reglas {
+    display: flex;
+    flex-direction: column;
+}
+
+.botones {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+    height: 200px;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: 10px;
+    font-weight: bold;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.pantalla {
+    display: flex;
+    justify-content: space-around;
+}
+
+.player {
+    width: 200px;
+    height: 220px;
+}
+
+.score {
+    display: flex;
+}
+
+footer {
+    display: flex;
+    background-color: rgb(235, 156, 39);
+    height: 5%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+

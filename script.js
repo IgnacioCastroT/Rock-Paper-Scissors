@@ -16,56 +16,125 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-    let humanchoice = prompt("Elige entre Piedra, Papel o Tijeras.")
+function getHumanChoice(choice) {
+    let humanchoice = choice
     return humanchoice
 }
 
 function playRound(humanChoice, computerChoice) {
 
-    humanChoice = humanChoice.toLowerCase()
-    computerChoice = computerChoice.toLowerCase()
-
-    if ((humanChoice == 'piedra' && computerChoice == 'tijeras' ) ||
+    if ((humanChoice == 'piedra' && computerChoice == 'tijera' ) ||
         (humanChoice == 'papel' && computerChoice == 'piedra') ||
         (humanChoice == 'tijera' && computerChoice == 'papel')) {
-        console.log(`Humano GANA con ${humanChoice} vs CPU: ${computerChoice}`)
-        return humanScore += 1;
 
-    }else if ((
-        humanChoice == computerChoice)) {
-        console.log(`Empate humano hizo ${humanChoice} y la CPU hizo ${computerChoice}`)
+        humanScore += 1;
+        updateScore();
+        marcador("humano", humanChoice, computerChoice);
 
-    }else {
-        console.log(`CPU GANA con ${computerChoice} vs humano ${humanChoice}`)
-        return computerScore +=1;
+        if (humanScore === 5) {
+            marcadorElemento.textContent = "HUMANO GANA EL JUEGO";
+            botones.forEach((boton) => boton.disabled = true);
+        }
+
+    } else if (humanChoice == computerChoice) {
+
+        marcador("empate", humanChoice, computerChoice);
+
+    } else {
+
+        computerScore += 1;
+        updateScore();
+        marcador("CPU", humanChoice, computerChoice);
+
+        if (computerScore === 5) {
+            marcadorElemento.textContent = "CPU GANA EL JUEGO";
+            botones.forEach((boton) => boton.disabled = true);
+        }
     }
 }
+
+
 
 function puntaje (humanScore, computerScore) {
     console.log(`Puntaje: Humano = ${humanScore} y Maquina = ${computerScore}`)
 }
 
 
-function playGame() {
 
-    let nGames = 5;
+function playGame(option) {
+    let computerChoice = getComputerChoice();
+    let humanchoice = option
+    playRound(humanchoice, computerChoice)
+}
 
-    for (let i = 0; i < nGames; i++){
-        let computerChoice = getComputerChoice();
-        let humanchoice = getHumanChoice()
-        playRound(humanchoice, computerChoice)
-    }
-    if (humanScore > computerScore) {
-        console.log("Gana el Humano")
-        console.log(puntaje(humanScore, computerScore))
-    }else if (humanScore == computerScore) {
-        console.log("Empate")
-        console.log(puntaje(humanScore, computerScore))
-    }else {
-        console.log("Gana la Maquina")
-        console.log(puntaje(humanScore, computerScore))
+
+function updateScore() {
+    humanP.textContent = humanScore;
+    computerP.textContent = computerScore;
+}
+
+function marcador(ganador, humanChoice, computerChoice){
+    if (ganador === "humano") {
+        marcadorElemento.textContent = 
+        `Humano juega ${humanChoice} | CPU juega ${computerChoice} → Humano GANA`;
+    } 
+    else if (ganador === "CPU") {
+        marcadorElemento.textContent = 
+        `Humano juega ${humanChoice} | CPU juega ${computerChoice} → CPU GANA`;
+    } 
+    else {
+        marcadorElemento.textContent = 
+        `Humano juega ${humanChoice} | CPU juega ${computerChoice} → EMPATE`;
     }
 }
 
-playGame()
+
+
+//DOM
+const botones = document.querySelectorAll(".btn")
+botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+        let option;
+
+        if (boton.classList.contains("piedra")) {
+            option = getHumanChoice("piedra")
+
+        }else if(boton.classList.contains("papel")) {
+            option = getHumanChoice("papel")
+
+        }else {
+            option = getHumanChoice("tijera")
+        }
+        playGame(option)
+    })
+    
+})
+
+
+const result = document.querySelectorAll(".score");
+const pantalla = document.querySelector(".resultado")
+
+const marcadorElemento = document.createElement("h3")
+pantalla.appendChild(marcadorElemento)
+
+
+let humanP;
+let computerP;
+
+result.forEach((player) => {
+    const puntaje = document.createElement("p");
+    puntaje.style.fontSize = "60px"
+    puntaje.classList.add("resultado");
+
+    if (player.classList.contains("humano")) {
+        puntaje.textContent = humanScore;
+        humanP = puntaje;   // guardamos referencia
+    } else {
+        puntaje.textContent = computerScore;
+        computerP = puntaje; // guardamos referencia
+    }
+
+    player.appendChild(puntaje);
+});
+
+

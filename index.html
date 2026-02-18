@@ -5,9 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@600&display=swap" rel="stylesheet">        
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Juego de Piedra, Papel o Tijeras</h1>
-    <p>Para Jugar abre la consola con f12.</p>
+    <div class="header">
+        <h1>Juego de Piedra, Papel o Tijeras</h1>
+    </div>
+    <div class="reglas">
+        <h2>Reglas del Juego:</h2>
+        <p>- Selecciona una imagen para jugar.</p>
+        <p>- El primero que llegue a 5 puntos GANA.</p>
+    </div>
+    <div class="botones">
+        <button class="btn piedra">
+            <img src="images/piedra.png" alt="boton-piedra">
+        </button>
+        <button class="btn papel">
+            <img src="images/papel.png" alt="boton-papel">
+        </button>
+        <button class="btn tijera">
+            <img src="images/tijera.png" alt="boton-tijera">
+        </button>
+    </div>
+    <div class="resultado"> Score:
+        <div class="pantalla">
+            <div class="score humano">
+                <img class="player" src="images/humano.png" alt="player-humano">
+            </div>
+            <div class="score cpu">
+                <img class="player" src="images/cpu.png" alt="player-cpu">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Creado por Ignacio <a href="">Repo aqui</a></p>
+    </footer>
+
 </body>
 </html>
